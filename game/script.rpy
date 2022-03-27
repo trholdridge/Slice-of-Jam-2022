@@ -61,7 +61,7 @@ label start:
         "They/them":
             $ they = "they"
 
-    T neutral "Cool, see you around I guess."
+    T neutral "Cool. See you around I guess."
 
 label sceneBeforeMaze:
     scene black
@@ -78,14 +78,14 @@ label sceneBeforeMaze:
     "The outcast hears them and turns away. They are alone."
 
     menu:
-        "Yeah, that’s stupid. At least get the Transformers Toys Heroic, not Playskool.":
+        "\"Yeah, that’s stupid. At least get the Transformers Toys Heroic, not Playskool.\"":
             $ himbully -= 1
             $ toy = "Transformers"
 
-        "Yeah, that’s stupid. Gen 4 of My Little Pony is so much better than Gen 3.":
+        "\"Yeah, that’s stupid. Gen 4 of My Little Pony is so much better than Gen 3.\"":
             $ himbully -= 1
 
-        "I don’t care about what losers do.":
+        "\"I don’t care about what losers do.\"":
             jump sceneEnterMaze
 
     Classmate1 "Why do you know about [toy]?"
@@ -140,15 +140,15 @@ label sceneEnterMaze:
     "Regardless of whether this is real, the cat is waiting for Theo’s response."
 
     menu:
-        "Fine. Anything as long as I don’t have to hang out with weirdos too long.":
+        "\"Fine. Anything as long as I don’t have to hang out with weirdos too long.\"":
             $ himbully -= 1
 
-        "I can find the way out by myself.":
+        "\"I can find the way out by myself.\"":
             show A happy
             A "You have no choice but to follow me!"
             jump yarn
 
-        "I don’t need any help from you weirdos.":
+        "\"I don’t need any help from you weirdos.\"":
             $ himbully -= 1
 
     show A neutral
@@ -289,20 +289,20 @@ label vinnyPartOne:
     V "Theo… will you watch my vlogs?"
 
     menu: # NOTE depending on stats up til this point, restrict certain choices? Up to tulasi
-        "I guess… if I’m stuck in this maze and have nothing else to do.":
+        "\"I guess… if I’m stuck in this maze and have nothing else to do.\"":
             $ himbully += 1
             show V happy
             V "Wonderful, marvelous! Five regular moo-ers–I mean, viewers!"
             show A happy
 
-        "Why?":
+        "\"Why?\"":
             show V shocked
             V "Why… why! It’s been so long since anybody asked me that question."
             "Vinny clears his throat with a great hacking cough."
             V "To become a star, of course. My dream is to spread a-moo-sement to the masses!"
             show A happy
 
-        "Why would I ever watch a weirdo vlog?":
+        "\"Why would I ever watch a weirdo vlog?\"":
             $ himbully -= 1
             show A angy
             A "You can't call others weirdos!"
@@ -311,7 +311,7 @@ label vinnyPartOne:
             V "I am indeed a weirdo. And I’m proud of it!"
             show A neutral
 
-        "Pineapples and cows are literally the most uncool thing I’ve ever seen.":
+        "\"Pineapples and cows are literally the most uncool thing I’ve ever seen.\"":
             $ himbully -= 2
             show A angy
             A "There’s nothing wrong with pineapples and cows together! Besides, Vinny’s only half cow!"
