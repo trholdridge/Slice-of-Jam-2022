@@ -4,7 +4,7 @@
 # name of the character.
 define T = Character("Theo", image="theo")
 define A = DynamicCharacter("a_name", image="ariadne")
-define V = Character("Vinny")
+define V = DynamicCharacter("v_name", image="vinny")
 define I = Character("Icarus")
 define F = Character("Francis")
 define E = Character("Eduardo")
@@ -26,11 +26,12 @@ default their = "their"
 default theyre = "they're"
 
 # Stats
-default himbully = 10
+default himbully = 0
 
 # Other variables
 define toy = "My Little Pony"
 define verb = ""
+define snailChoice = 0
 
 # Verb modification function for pronouns
 init python:
@@ -178,7 +179,7 @@ label miniSnailMaze:
 
     "Soon, they come across a curious square table. The top of it is deeply grooved in grid-like patterns, forming a miniature maze. Ariadne leaps atop the edge of the maze and peers inside it."
 
-    show A happy at right
+    show A happy at left
     A "Eduardo? Is that you?"
 
     "Theo follows Ariadne’s line of sight to spot Eduardo within the maze. A trail of slime marks Eduardo’s pathing, which double-backs and loops around. He is having difficulty escaping the maze because he is a tiny snail."
@@ -202,21 +203,22 @@ label miniSnailMaze:
     menu: # stat checks for these choices?? → tulasi help
         "Help Eduardo solve the maze.":
             $ himbully += 1
+            $ snailChoice += 1
             "Theo studies the maze."
             T neutral "Go forward until you hit the wall, then take two rights and a left."
             E "W… Whoa…"
             "Theo gets the impression that Eduardo is grateful."
+            show A neutral
 
         "\"Looks lame.\"":
             E "W… Ehh…"
-            "Theo gets the impression that Eduardo is tired and sad."
             show A neutral
-            "Ariadne studies Theo with an unreadable expression."
-            show A happy
-            A "Let’s not paws for too long!"
+            "Theo gets the impression that Eduardo is tired and sad."
 
         "Use a block to wall Eduardo into a box.":
             $ himbully -= 1
+            $ snailChoice -= 1
+            show A neutral
             E "W… Wehh!"
             "Theo gets the impression that Eduardo is scared."
             show A angy
@@ -225,8 +227,6 @@ label miniSnailMaze:
             show A neutral
             A "Let’s not paws for too long."
             jump afterSnail
-
-    show A neutral
 
     "Ariadne studies Theo with an unreadable expression."
 
@@ -245,6 +245,203 @@ label afterSnail:
 
     A "Nya-ha-ha! It’s never meow-notonous!"
     A "The labyrinth is a great retirement spot."
+    hide A
+
+label vinnyPartOne:
+
+    "Theo and Ariadne emerge into a small clearing. In the center of it sits a strange creature. Theo can only describe the creature as some sort of cow-centaur with a nerd torso. They are everything Theo dislikes."
+
+    show V sad at right
+
+    "When they speak, their voice is slow and surprisingly deep."
+
+    $ v_name = "???"
+    V "Only three views today… one less than yesterday. I’ll never be famous."
+
+    show A shock at left
+    A "Vinny, what have I told you about checking your views too often?"
+    show A neutral
+
+    $ v_name = "Vinny"
+    V "I want to be a moo-vie star…"
+
+    show A happy
+    A "I promise, you’re famous to me! That one less viewer was only because Eduardo was stuck in a maze today, he didn’t mean to miss your stream."
+    show A neutral
+
+    "Vinny shakes his head and lows."
+
+    show V angy
+    V "Only my friends watch me… when will the world recognize my looo-minosity?"
+
+    show A happy
+    A "Soon, I’m paw-sitive! Now perk up, we have a trespasser today!"
+
+    show V neutral
+    V "Moo… a guest?"
+
+    if himbully > 0:
+        A "[their!c] name is Theo!"
+    else:
+        A "[their!c] name is Cleo!"
+        T neutral "Theo."
+
+    V "Theo… will you watch my vlogs?"
+
+    menu: # NOTE depending on stats up til this point, restrict certain choices? Up to tulasi
+        "I guess… if I’m stuck in this maze and have nothing else to do.":
+            $ himbully += 1
+            show V happy
+            V "Wonderful, marvelous! Five regular moo-ers–I mean, viewers!"
+            show A happy
+
+        "Why?":
+            show V shocked
+            V "Why… why! It’s been so long since anybody asked me that question."
+            "Vinny clears his throat with a great hacking cough."
+            V "To become a star, of course. My dream is to spread a-moo-sement to the masses!"
+            show A happy
+
+        "Why would I ever watch a weirdo vlog?":
+            $ himbully -= 1
+            show A angy
+            A "You can't call others weirdos!"
+            show V neutral
+            "Vinny draws himself up. His hair seems to puff up with his spirit."
+            V "I am indeed a weirdo. And I’m proud of it!"
+            show A neutral
+
+        "Pineapples and cows are literally the most uncool thing I’ve ever seen.":
+            $ himbully -= 2
+            show A angy
+            A "There’s nothing wrong with pineapples and cows together! Besides, Vinny’s only half cow!"
+            show V neutral
+            "Vinny draws himself up. His hair seems to puff up with his spirit."
+            V "I am indeed half cow, like my brother. He was the Minotaur. I’m proud of it!"
+            show A neutral
+
+    show V neutral
+    A "Regardless, Theo here got lost on a school trip. I’m leading [them] out of the labyrinth."
+
+    T angy "Don’t say it in such an embarrassing way!"
+
+    "Ariadne ignores Theo to address Vinny."
+
+    show A happy
+    if snailChoice == 1:
+        A "Theo has some rough edges, but I’m confident that there’s a good person somewhere deep down there! [they!c] helped Eduardo out just now."
+    elif snailChoice == 0:
+        A "I’m not sure that Theo is the kind of viewer you want. [they!c] didn’t even help Eduardo out of the table-maze just now!"
+    else:
+        A "I’m not sure that Theo is the kind of viewer you want. [they!c] walled Eduardo into the table-maze just now!"
+
+    show V shock
+    V "Interesting…"
+    show V neutral
+    V "No matter your character, Theo, I’m glad you are escaping the labyrinth. You belong to your School Trip."
+
+    show A happy
+    A "It’s school trip, all lowercase!"
+    show A neutral
+
+    V "Right. I would help you, but…"
+    show V sad
+    V "Unfortunately, my line is bound to this labyrinth with a curse. I will never be able to leave. My only hope of becoming famous is my vlogging channel."
+    show V neutral
+    V "So I would really appreciate your views."
+    show V sad
+    V "Thanks for stopping by…"
+
+    show A happy
+    A "Anytime, Vinny! You know I don’t have any hobbies."
+    hide A
+    hide V
+
+label icarusPartOne:
+
+    "Theo is less skeptical that Ariadne is actually leading him out, after meeting Vinny."
+
+    show A center
+    A "You should know, Theo, that what I admire most about Vinny is that he’s not afraid to be himself. I wish more people would see that, so that he could achieve his goal."
+
+    "Ariadne fluffs her tail thoughtfully."
+
+    A "Also, neither Vinny nor his line is actually cursed. So don’t feel too bad for him."
+
+    T shock "Then why does he stay in that one place?"
+
+    show A neutral
+    A "In reality, he is simply too tall for the doorways in this labyrinth."
+
+    T neutral "Not too wide?"
+
+    show A happy
+    A "Nya-ha-ha! Don’t ask him that to his face, he’ll grow insecure about his body!"
+    hide A
+
+    "It is another few minutes before the winged person from the very beginning swoops in from above. Theo sighs. This is just one encounter after another."
+
+    show I neutral at right
+    I "You dimwits still tryna get out of here?"
+
+    show A happy at left
+    A "I don’t see you helping!"
+
+    show I happy
+    I "Hah. And waste more time with you, when I could be listening to {b}DEATH METAL{/b}?"
+    show I neutral
+
+    "Icarus cracks her knuckles. Permanent scowl lines frame her mouth. She narrows her eyes."
+
+    show A neutral
+    show I angy
+    I "As if I would do anything so weak."
+    show I neutral
+
+    show A happy
+    A "Did you watch Vinny’s vlog today?"
+
+    show I angy
+    I "Of course I did."
+
+    menu:
+        #(if watch, "i plan to watch it to"?)
+        "\"You… watch Vinny’s vlog?\" Icarus does not seem the type.":
+            $ himbully += 1
+            show I happy
+            I "You don’t?"
+
+        "\"Boring.\"":
+            show I neutral
+            I "So are you."
+
+        "\"Seems like a weakling thing to me.\"":
+            $ himbully -= 1
+            show I angy
+            I "Bold words from a sprout!"
+
+    show I neutral
+
+    show A happy
+    A "Have you come to help us, Icarus?"
+
+    I "As if. And don’t ask me to, because I can leave whenever I want."
+
+    A "Then why do you keep coming back?"
+
+    show I angy
+    I "I wouldn’t come here at all if I weren’t so bored!"
+    show I neutral
+    I "Whatever."
+    I "Don’t mind me. Go on, this should be entertaining."
+
+    "Icarus flies upwards, but the shadows of her wings remind Theo that she is watching." # * wHAT am i saying here icarus just gotta go
+    "This time, Ariadne points out a direction to Theo and lets [them] lead the way. They make good progress."
+    "The last doorway, however, is blocked by the desk of a professional frog. The nameplate on his desk says \"FRANCIS.\""
+
+label frogBusinessman:
+
+    F "Greetings, travelers. Please sit and have some tea; I always enjoy company between three and seven pm. What brings you to my den on this charming afternoon?"
 
 label endGame:
     return
