@@ -12,7 +12,7 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("Slice of Jam 2022")
+define config.name = _("Journey to the Center of the Corn")
 
 
 ## Determines if the title given above is shown on the main menu screen. Set
