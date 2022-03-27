@@ -9,6 +9,7 @@ define E = Character("Eduardo")
 
 define Classmate1 = Character("Classmate 1")
 define Classmate2 = Character("Classmate 2")
+define Teacher = Character("Teacher")
 
 # Pronoun variables
 default they = "they"
@@ -24,6 +25,8 @@ define snailChoice = 0
 define toy = "My Little Pony"
 define verb = ""
 define gift = ""
+define ending = 0
+define hasAri = 0
 
 # Verb modification function for pronouns
 init python:
@@ -789,18 +792,264 @@ label frogEnd:
 
     "Francis lifts his desk clean off of the ground and motions for Ariadne and Theo to make their way through."
 
+label argument:
+    # generic labyrinth
+
+    "After a while of walking, Theo and Ariadne happen upon a familiar length of yarn."
+
+    T shock "We’ve been here before."
+
+    show ariadne happy
+    A "Sometimes, it happens."
+    show ariadne neutral
+    A "Let’s go back to the right turn instead of the left…"
+
+    "The right turn leads them to another length of yarn."
+
+    T angy "We’ve been here before, too!"
+
+    show ariadne happy
+    A "Have patience."
+
+    "They try again. This time they emerge into the corridor before Vinny’s clearing."
+
+    T angy "What’s up with this? Why aren’t we out yet?"
+
+    show ariadne neutral
+    A "Patience is a virtue! We can try again…"
+
+    if himbully > 2:
+        T neutral "This labyrinth doesn’t make any sense. I thought we were heading in the right direction."
+        A "Meow-be, we need to head in the left direction!"
+
+        $ hasAri = 1
+        jump vinnyPartTwo
+
+    elif himbully > -1:
+        T angy "This labyrinth doesn’t make any sense."
+
+        show ariadne angy
+        A "Hey meow, I want you out too! But don’t insult my home."
+        show ariadne neutral
+        A "Sometimes things are strange and not straightforward. That’s the charm of it! The labyrinth always has fun things to do."
+
+        T angy "I’m not here to have fun. I wasn’t meant to be here at all. I want things to go back to normal."
+
+        show ariadne angy
+        A "Just because we’re not normal, doesn’t mean we’re not worth getting to know!"
+
+        "Ariadne hisses and claws at her yarn."
+
+        show ariadne neutral
+        A "There! Now, the yarn is tangled."
+        A "You’d better cool your claw-ful temper, or I won’t come back!"
+        hide ariadne
+
+        "Ariadne stalks off with her back arched."
+        $ hasAri = 0
+
+        jump vinnyPartTwo
+
+    else:
+        T angy "This labyrinth doesn’t make any sense. It’s stupid! I want out already."
+
+        show ariadne angy
+        A "Hey meow, I want you out too! But don’t insult my home."
+        show ariadne neutral
+        A "Sometimes things are strange and not straightforward. That’s the charm of it! The labyrinth always has fun things to do."
+
+        T angy "I don’t care about this stupid labyrinth."
+
+        show ariadne angy
+        A "Well, this labyrinth doesn’t care about you!"
+        A "Icarus, I’m begging you. Take this child off my hands."
+
+        "Icarus lands with a flurry of feathers. Her face is dark."
+
+        show icarus angy
+        I "I’ve had enough of this one too."
+        hide ariadne
+
+        "Icarus strides towards Theo. Theo cringes away, but she only swipes [them] up by [their] shoulders and ascends into the sky. She seems to delight in the way Theo squeals in fright when she tosses [them] onto the ground outside the corn maze after a steep dive."
+
+        show icarus happy
+        I "That’s that for you, brat! See that you change your attitude, unless you wanna die alone."
+        show icarus neutral
+        I "Middle schoolers always wanna be cool, but the most uncool thing is betraying yourself just to fit in."
+        hide icarus
+
+        jump outsideMaze
+
 label vinnyPartTwo:
 
-label argument:
+    "Sullen, Theo re-arrives at Vinny’s."
 
-label leaveLabyrinth:
+    show vinny shock
+    V "Back again?"
+
+    if hasAri == 1:
+        show ariadne neutral
+        A "Still on our way out. Theo is becoming impatient, though."
+
+        show vinny neutral
+        V "I remember when I was young and impatient to be famous..."
+        V "I’m still that way."
+    else:
+        T neutral "Ariadne tangled her yarn and ditched me."
+        V "What did you do?"
+        T angy "Why do you assume right away that it’s something I did?"
+        T neutral "She’s the one who threw a hissy fit. I only said I wanted to leave."
+        T angy "That’s what we’ve been trying to do all along!"
+
+    show vinny neutral
+    V "The most important things take time, Theo. Take it from me."
+    show vinny sad
+    V "I’m not famous yet."
+
+    T neutral "You’re pretty weird to me."
+
+    show vinny happy
+    V "Yes, I’m weird!"
+
+    T mad "That’s not a compliment!"
+    T neutral "I only meant, I don’t understand how you want to be famous so much. What makes you deserve to be famous, when you’re so…"
+    T neutral "Not mainstream?"
+
+    show vinny happy
+    V "Oh, you’re asking about my special self-cow-nfidence!"
+
+    T shock "That’s not what I’m asking about…"
+
+    V "Of course, I deserve to be famous! I stand out."
+    show vinny neutral
+    V "People who want to fit in, they erase many of the unique parts of themselves."
+    show vinny happy
+    V "Those moo-nique parts are in fact what endears them to udders! The things that I care about aren’t less important to me just because they aren’t important to everyone else."
+    show vinny neutral
+    V "You have a moo-nique interest of your own, right?"
+
+    T angy "I’m not a loser!"
+
+    show vinny shock
+    V "Such a vehement response…"
+
+    show vinny neutral
+    V "Having an interest doesn’t mean you’re a loser."
+
+    show vinny happy
+    V "It means you aren’t boring!"
+
+    T shock "I can’t believe you’re actually making sense."
+    T sad "I suppose… you have a point."
+    T neutral "…"
+    T happy "I like dolls!"
+
+    V "You’re not so bad, calf!"
+
+    "Icarus swoops in."
+
+    show icarus happy at center
+    I "Huh, I suppose you aren’t just some cardboard cutout after all. You’ve earned my help."
+    hide icarus
+
+    if hasAri == 1:
+        "Icarus picks up the yarn and soars upward. Theo sees her weaving over the labyrinth, in and out of sight."
+    else:
+        "Icarus picks up the tangled yarn and soars upward. Theo sees her weaving over the labyrinth, in and out of sight."
+
+    "Eventually, Theo hears a distant call…"
+
+    I "Alright sprout, follow the yarn."
+
+    "Vinny gives Theo an encouraging smile as [they] step tentatively back into the labyrinth corridors."
+    hide vinny
+    hide ariadne
 
 label outsideMaze:
+    # outside maze
 
     stop music fadeout 1.0
     play music "audio/Kevin MacLeod - Nu Flute.mp3"
 
+    T neutral "Hey…"
+
+    Teacher "Theo, where have you been? I was just about to mark you as missing."
+
+    "Theo reflects on the labyrinth."
+
+    if himbully > 2:
+        "The maze and its inhabitants took some getting used to. It was all weird, but kind of cool. Icarus was the most normal one in there, and Icarus has wings."
+    elif himbully > -1:
+        "The maze and its inhabitants were all weird. Icarus was the most normal one in there, and Icarus has wings."
+    else:
+        "The maze and its inhabitants were all weird. Talking animals? Give Theo a break."
+
+    T neutral "I wanted to solve the maze by myself. And I did."
+
+    Teacher "Congratulations. Next time, let someone know before wandering off."
+
+    "Theo rejoins his friends, who jeer at him."
+
+    Classmate1 "Got lost, Theo?"
+
+    menu:
+        "Leave them for the student with the dolls." if himbully > -1:
+            $ ending = 1
+            "Theo had been gone for only a day, and [their] posse turned on [them]. It isn’t worth trying to fit in with these posers."
+            T neutral "Whatever."
+            Classmate1 "Wait, where are you going?"
+            T happy "To find more brain cells, after half of them just shriveled up from being near you."
+            Classmate2 "Ooh!"
+            Outcast "Here to make fun of me again? Tch. Stop pretending."
+            T angy "I’m not pretending."
+
+            if toy == "Transformers":
+                T neutral "If you’re into Transformers, then Transformers Toys Heroic is much better than Playskool."
+                T happy "You should come over today so I can show you."
+                Outcast "Really? Okay! But you're totally wrong about Playskool."
+            else:
+                T neutral "If you’re into My Little Pony, then Gen 4 is far superior to Gen 3."
+                T happy "You should come over today so I can show you."
+                Outcast "Really? Okay! But you're totally wrong about Gen 3."
+            T neutral "Figures that the only person around here with some taste, actually has horrible taste."
+
+        "Play it off.":
+            $ ending = 0
+            T shock "Me, get lost? You’re making stuff up."
+            T neutral "I only go where I want to go."
+            "Theo looks wistfully at the dolls in the hands of that student he was making fun of earlier."
+            Classmate2 "You’re too cool! Find anything interesting?"
+            T neutral "So there was this talking cat…"
+            Classmate1 "Really?!"
+            T happy "Ha! I’m messing with you. You should have seen your faces!"
+
+        "Jeer back." if himbully < -1:
+            $ ending = -1
+            T shock "Me, get lost? You’re making stuff up."
+            T angy "I saw more of that maze than you’ll ever see! You dimwits only ever follow the teacher or me."
+            T neutral "Good thing, too. I couldn’t imagine the hospital bills if you tried to think for yourselves."
+            Classmate1 "We don’t have to follow you, you know!"
+            "Theo sits alone on the train ride home, cursing the labyrinth for ruining [their] field trip."
+            "[they!c] just wanted to fit in… but ended up standing out anyway."
+
 label endGame:
 
+    scene black
+
     "The End"
+
+    if ending == 1:
+        "Wow, you made choices that changed Theo to become nicer!"
+        "That must have been difficult. He’s quite stubborn."
+    elif ending == 0:
+        "Somehow, Theo barely changed at all in the labyrinth."
+        "He’s quite stubborn!"
+    else:
+        "I can’t help but think that you could have been a nicer person today."
+        "Does Theo feel bad at all? ><"
+
+    "Regardless of what you chose, we hope you enjoyed the outcomes."
+    "Thank you for playing! Support us by rating this game and leaving a comment."
+    "If you liked this, check out other games made for Slice of Jam!"
+
     return
