@@ -81,13 +81,13 @@ label sceneBeforeMaze:
 
     Classmate1 "This is such a dumb field trip."
 
-    T neutral "A corn maze? More like a corn lame."
-    T happy "teehee"
+    T happy "Corn maze? More like... corn lame."
 
-    "Theo’s posse laughs. They are clumped together at the back of the group."
+    "Theo’s posse laughs. They are all clumped together at the back of the school group."
+
     Classmate2 "Speaking of lame, look at that! What a loser. Nobody plays with dolls anymore."
 
-    "The outcast hears them and turns away. They are alone."
+    "The outcast hears them and turns away. She is alone."
 
     menu:
         "\"Yeah, that’s stupid. At least get the Transformers Toys Heroic, not Playskool.\"":
@@ -97,12 +97,14 @@ label sceneBeforeMaze:
         "\"Yeah, that’s stupid. Gen 4 of My Little Pony is so much better than Gen 3.\"":
             $ himbully -= 1
 
-        "\"I don’t really care about what losers do.\"":
+        "\"I don’t really care about what weirdos do.\"":
+            "Theo would never admit to liking something as corny as [toy]."
             jump sceneEnterMaze
 
     Classmate1 "Why do you know about [toy]?"
 
     T angy "What? No, I don’t... I was just making it up."
+
     "Theo sighs in relief when [their] friends drop that line of questioning. [they!c] would never admit to liking something as corny as [toy]."
 
 label sceneEnterMaze:
@@ -145,7 +147,7 @@ label sceneEnterMaze:
     $ a_name = "Ariadne"
 
     show ariadne angy
-    A "You–hiss!"
+    A "You—hiss!"
     show ariadne neutral
 
     "Ariadne grooms herself with a huff."
@@ -175,9 +177,9 @@ label sceneEnterMaze:
 
 label yarn:
     show ariadne neutral
-    A "Without this yarn, you have no way of tracking where you’ve come from in the labyrinth. And the only one who can use this yarn… "
+    A "Without this yarn, you have no way of tracking where you’ve come from in the labyrinth. And the only one who can use this yarn…"
     show ariadne happy
-    A "... is me-ow!"
+    A "…is me-ow!"
     show ariadne happy
 
     "Theo scoffs. *** However, one thing sticks out to [them]."
@@ -216,7 +218,7 @@ label miniSnailMaze:
     T neutral "Theo."
 
     show ariadne happy
-    A "...Theo, be a kitten and help him out!"
+    A "…Theo, be a kitten and help him out!"
 
     menu: # stat checks for these choices?? → tulasi help
         "Help Eduardo solve the maze.":
@@ -229,19 +231,19 @@ label miniSnailMaze:
             show ariadne neutral
 
         "\"Looks lame.\"":
-            E "W… Ehh…"
             show ariadne neutral
+            E "W… Ehh…"
             "Theo gets the impression that Eduardo is tired and sad."
 
         "Use a block to wall Eduardo into a box.":
+            show ariadne neutral
             $ himbully -= 1
             $ snailChoice -= 1
-            show ariadne neutral
             E "W… Wehh!"
             "Theo gets the impression that Eduardo is scared."
             show ariadne angy
             A "That’s not very mice!"
-            "Ariadne uses a paw to bat your block away from Eduardo."
+            "Ariadne uses a paw to bat the block away from Eduardo. She glares are Theo for a moment."
             show ariadne neutral
             A "Let’s not paws for too long."
             jump afterSnail
@@ -330,10 +332,10 @@ label vinnyPartOne:
             V "I am indeed a weirdo. And I’m proud of it!"
             show ariadne neutral
 
-        "\"Pineapples and cows are literally the most uncool thing I’ve ever seen.\"" if himbully < 0:
+        "\"Cows are literally the most uncool thing in the world.\"" if himbully < 0:
             $ himbully -= 2
             show ariadne angy
-            A "There’s nothing wrong with pineapples and cows together! Besides, Vinny’s only half cow!"
+            A "There’s nothing wrong with cows! Besides, Vinny’s only half cow!"
             show vinny neutral
             "Vinny draws himself up. His hair seems to puff up with his spirit."
             V "I am indeed half cow, like my brother. He was the Minotaur. I’m proud of it!"
@@ -381,7 +383,7 @@ label icarusPartOne:
     "Theo is less skeptical that Ariadne is actually leading him out, after meeting Vinny."
 
     show ariadne neutral at center
-    A "You should know, Theo, that what I admire most about Vinny is that he’s not afraid to be himself. I wish more people would see that, so that he could achieve his goal."
+    A "You should know, Theo, what I admire most about Vinny is that he’s not afraid to be himself. I wish more people would see that, so that he could achieve his goal."
 
     "Ariadne fluffs her tail thoughtfully."
 
@@ -456,7 +458,8 @@ label icarusPartOne:
     I "Don’t mind me. Go on, this should be entertaining."
 
     "Icarus flies upwards, but the shadows of her wings remind Theo that she is watching." # * wHAT am i saying here icarus just gotta go
-    "This time, Ariadne points out a direction to Theo and lets [them] lead the way. They make good progress."
+    "This time, Ariadne points out a direction to Theo and lets [them] lead the way. They make good progress, traipsing through the twists and turns."
+    "Finally, they arrive at an ornate doorway. Theo can practically taste freedom on the other side."
     "The last doorway, however, is blocked by the desk of a professional frog. The nameplate on his desk says \"FRANCIS.\""
 
 label frogBusinessman:
