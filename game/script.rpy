@@ -43,10 +43,14 @@ image side theo sad = "images/theo_sprites/theo_sad.png"
 image side theo angy = "images/theo_sprites/theo_angry.png"
 image side theo shocked = "images/theo_sprites/theo_shocked.png"
 
-image vinny happy = "images/vinny_sprites/vinny_clothed_happy.png"
-image vinny neutral = "images/vinny_sprites/vinny_clothed_neutral.png"
-image vinny sad = "images/vinny_sprites/vinny_clothed_sad.png"
-image vinny shocked = "images/vinny_sprites/vinny_clothed_shocked.png"
+image vinny happy = "images/vinny_sprites/vinny_clothed/vinny_clothed_happy.png"
+image vinny neutral = "images/vinny_sprites/vinny_clothed/vinny_clothed_neutral.png"
+image vinny sad = "images/vinny_sprites/vinny_clothed/vinny_clothed_sad.png"
+image vinny shocked = "images/vinny_sprites/vinny_clothed/vinny_clothed_shocked.png"
+image vinny happy2 = "images/vinny_sprites/vinny_naked/vinny_naked_happy.png"
+image vinny neutral2 = "images/vinny_sprites/vinny_naked/vinny_naked_neutral.png"
+image vinny sad2 = "images/vinny_sprites/vinny_naked/vinny_naked_sad.png"
+image vinny shocked2 = "images/vinny_sprites/vinny_naked/vinny_naked_shocked.png"
 
 image icarus happy = "images/icarus_sprites/icarus_happy.png"
 image icarus neutral = "images/icarus_sprites/icarus_neutral.png"
@@ -57,6 +61,9 @@ image ariadne neutral = "images/ariadne_sprites/ariadne_neutral.png"
 image ariadne sad = "images/ariadne_sprites/ariadne_sad.png"
 image ariadne angy = "images/ariadne_sprites/ariadne_angry.png"
 image ariadne shocked = "images/ariadne_sprites/ariadne_shocked.png"
+
+image ariadne yarn1 = "images/ariadne_sprites/ariadne_yarn/ariadne_yarn_happy.png"
+image ariadne yarn2 = "images/ariadne_sprites/ariadne_yarn/ariadne_yarn_neutral.png"
 
 # ---------- The game starts here. ----------
 
@@ -178,16 +185,16 @@ label sceneEnterMaze:
     A "Anyway, you have no choice but to follow me!"
 
 label yarn:
-    show ariadne neutral
+    show ariadne yarn2
     A "Without this yarn, you have no way of tracking where you’ve come from in the labyrinth. And the only one who can use this yarn… "
-    show ariadne happy
+    show ariadne yarn1
     A "... is me-ow!"
-    show ariadne happy
 
     "Theo scoffs. *** However, one thing sticks out to [them]."
 
     T neutral "Labyrinth? This is a corn maze."
 
+    show ariadne happy
     A "How a-mew-sing! You seem to have gotten turned around without even trying. That’s a fresh talent!"
     A "Follow me, lost human!"
     hide ariadne
@@ -736,9 +743,9 @@ label askVinny:
 
     show ariadne sad
 
-    show vinny shocked
+    show vinny shocked2
     V "It’s cold…"
-    show vinny sad
+    show vinny sad2
 
     T happy "Perfect."
     T shocked "Where did all these muscles come from, though?"
@@ -746,7 +753,7 @@ label askVinny:
     V "All there is to do here is exercise…"
     hide vinny
 
-    $ gift = "shirt"
+    $ gift = "pineapple shirt"
 
     jump frogEnd
 
@@ -772,7 +779,7 @@ label frogEnd:
         F "I love it!"
         F "I know exactly what description to write for this."
 
-        if gift == "shirt":
+        if gift == "pineapple shirt":
             F "This pineapple dream will make you gleam!"
         else:
             F "This spiffy fedora has a gentleman’s aura!"
@@ -883,87 +890,168 @@ label argument:
 label vinnyPartTwo:
 
     "Sullen, Theo re-arrives at Vinny’s."
+    if gift == "pineapple shirt":
+        show vinny shocked2
+        V "Back again?"
 
-    show vinny shock
-    V "Back again?"
+        if hasAri == 1:
+            show ariadne neutral
+            A "Still on our way out. Theo is becoming impatient, though."
 
-    if hasAri == 1:
-        show ariadne neutral
-        A "Still on our way out. Theo is becoming impatient, though."
+            show vinny neutral2
+            V "I remember when I was young and impatient to be famous..."
+            V "I’m still that way."
+        else:
+            T neutral "Ariadne tangled her yarn and ditched me."
+            V "What did you do?"
+            T angy "Why do you assume right away that it’s something I did?"
+            T neutral "She’s the one who threw a hissy fit. I only said I wanted to leave."
+            T angy "That’s what we’ve been trying to do all along!"
+
+        show vinny neutral2
+        V "The most important things take time, Theo. Take it from me."
+        show vinny sad2
+        V "I’m not famous yet."
+
+        T neutral "You’re pretty weird to me."
+
+        show vinny happy2
+        V "Yes, I’m weird!"
+
+        T mad "That’s not a compliment!"
+        T neutral "I only meant, I don’t understand how you want to be famous so much. What makes you deserve to be famous, when you’re so…"
+        T neutral "Not mainstream?"
+
+        show vinny happy2
+        V "Oh, you’re asking about my special self-cow-nfidence!"
+
+        T shocked "That’s not what I’m asking about…"
+
+        V "Of course, I deserve to be famous! I stand out."
+        show vinny neutral2
+        V "People who want to fit in, they erase many of the unique parts of themselves."
+        show vinny happy2
+        V "Those moo-nique parts are in fact what endears them to udders! The things that I care about aren’t less important to me just because they aren’t important to everyone else."
+        show vinny neutral2
+        V "You have a moo-nique interest of your own, right?"
+
+        T angy "I’m not a loser!"
+
+        show vinny shocked2
+        V "Such a vehement response…"
+
+        show vinny neutral2
+        V "Having an interest doesn’t mean you’re a loser."
+
+        show vinny happy2
+        V "It means you aren’t boring!"
+
+        T shocked "I can’t believe you’re actually making sense."
+        T sad "I suppose… you have a point."
+        T neutral "…"
+        T happy "I like dolls!"
+
+        V "You’re not so bad, calf!"
+
+        "Icarus swoops in."
+
+        show icarus happy at center
+        I "Huh, I suppose you aren’t just some cardboard cutout after all. You’ve earned my help."
+        hide icarus
+
+        if hasAri == 1:
+            "Icarus picks up the yarn and soars upward. Theo sees her weaving over the labyrinth, in and out of sight."
+        else:
+            "Icarus picks up the tangled yarn and soars upward. Theo sees her weaving over the labyrinth, in and out of sight."
+
+        "Eventually, Theo hears a distant call…"
+
+        I "Alright sprout, follow the yarn."
+
+        "Vinny gives Theo an encouraging smile as [they] step tentatively back into the labyrinth corridors."
+        hide vinny
+        hide ariadne
+    else:
+        show vinny shocked
+        V "Back again?"
+
+        if hasAri == 1:
+            show ariadne neutral
+            A "Still on our way out. Theo is becoming impatient, though."
+
+            show vinny neutral
+            V "I remember when I was young and impatient to be famous..."
+            V "I’m still that way."
+        else:
+            T neutral "Ariadne tangled her yarn and ditched me."
+            V "What did you do?"
+            T angy "Why do you assume right away that it’s something I did?"
+            T neutral "She’s the one who threw a hissy fit. I only said I wanted to leave."
+            T angy "That’s what we’ve been trying to do all along!"
 
         show vinny neutral
-        V "I remember when I was young and impatient to be famous..."
-        V "I’m still that way."
-    else:
-        T neutral "Ariadne tangled her yarn and ditched me."
-        V "What did you do?"
-        T angy "Why do you assume right away that it’s something I did?"
-        T neutral "She’s the one who threw a hissy fit. I only said I wanted to leave."
-        T angy "That’s what we’ve been trying to do all along!"
+        V "The most important things take time, Theo. Take it from me."
+        show vinny sad
+        V "I’m not famous yet."
 
-    show vinny neutral
-    V "The most important things take time, Theo. Take it from me."
-    show vinny sad
-    V "I’m not famous yet."
+        T neutral "You’re pretty weird to me."
 
-    T neutral "You’re pretty weird to me."
+        show vinny happy
+        V "Yes, I’m weird!"
 
-    show vinny happy
-    V "Yes, I’m weird!"
+        T mad "That’s not a compliment!"
+        T neutral "I only meant, I don’t understand how you want to be famous so much. What makes you deserve to be famous, when you’re so…"
+        T neutral "Not mainstream?"
 
-    T mad "That’s not a compliment!"
-    T neutral "I only meant, I don’t understand how you want to be famous so much. What makes you deserve to be famous, when you’re so…"
-    T neutral "Not mainstream?"
+        show vinny happy
+        V "Oh, you’re asking about my special self-cow-nfidence!"
 
-    show vinny happy
-    V "Oh, you’re asking about my special self-cow-nfidence!"
+        T shocked "That’s not what I’m asking about…"
 
-    T shock "That’s not what I’m asking about…"
+        V "Of course, I deserve to be famous! I stand out."
+        show vinny neutral
+        V "People who want to fit in, they erase many of the unique parts of themselves."
+        show vinny happy
+        V "Those moo-nique parts are in fact what endears them to udders! The things that I care about aren’t less important to me just because they aren’t important to everyone else."
+        show vinny neutral
+        V "You have a moo-nique interest of your own, right?"
 
-    V "Of course, I deserve to be famous! I stand out."
-    show vinny neutral
-    V "People who want to fit in, they erase many of the unique parts of themselves."
-    show vinny happy
-    V "Those moo-nique parts are in fact what endears them to udders! The things that I care about aren’t less important to me just because they aren’t important to everyone else."
-    show vinny neutral
-    V "You have a moo-nique interest of your own, right?"
+        T angy "I’m not a loser!"
 
-    T angy "I’m not a loser!"
+        show vinny shocked
+        V "Such a vehement response…"
 
-    show vinny shock
-    V "Such a vehement response…"
+        show vinny neutral
+        V "Having an interest doesn’t mean you’re a loser."
 
-    show vinny neutral
-    V "Having an interest doesn’t mean you’re a loser."
+        show vinny happy
+        V "It means you aren’t boring!"
 
-    show vinny happy
-    V "It means you aren’t boring!"
+        T shocked "I can’t believe you’re actually making sense."
+        T sad "I suppose… you have a point."
+        T neutral "…"
+        T happy "I like dolls!"
 
-    T shock "I can’t believe you’re actually making sense."
-    T sad "I suppose… you have a point."
-    T neutral "…"
-    T happy "I like dolls!"
+        V "You’re not so bad, calf!"
 
-    V "You’re not so bad, calf!"
+        "Icarus swoops in."
 
-    "Icarus swoops in."
+        show icarus happy at center
+        I "Huh, I suppose you aren’t just some cardboard cutout after all. You’ve earned my help."
+        hide icarus
 
-    show icarus happy at center
-    I "Huh, I suppose you aren’t just some cardboard cutout after all. You’ve earned my help."
-    hide icarus
+        if hasAri == 1:
+            "Icarus picks up the yarn and soars upward. Theo sees her weaving over the labyrinth, in and out of sight."
+        else:
+            "Icarus picks up the tangled yarn and soars upward. Theo sees her weaving over the labyrinth, in and out of sight."
 
-    if hasAri == 1:
-        "Icarus picks up the yarn and soars upward. Theo sees her weaving over the labyrinth, in and out of sight."
-    else:
-        "Icarus picks up the tangled yarn and soars upward. Theo sees her weaving over the labyrinth, in and out of sight."
+        "Eventually, Theo hears a distant call…"
 
-    "Eventually, Theo hears a distant call…"
+        I "Alright sprout, follow the yarn."
 
-    I "Alright sprout, follow the yarn."
-
-    "Vinny gives Theo an encouraging smile as [they] step tentatively back into the labyrinth corridors."
-    hide vinny
-    hide ariadne
+        "Vinny gives Theo an encouraging smile as [they] step tentatively back into the labyrinth corridors."
+        hide vinny
+        hide ariadne
 
 label outsideMaze:
     # outside maze
@@ -1015,7 +1103,7 @@ label outsideMaze:
 
         "Play it off.":
             $ ending = 0
-            T shock "Me, get lost? You’re making stuff up."
+            T shocked "Me, get lost? You’re making stuff up."
             T neutral "I only go where I want to go."
             "Theo looks wistfully at the dolls in the hands of that student he was making fun of earlier."
             Classmate2 "You’re too cool! Find anything interesting?"
@@ -1025,7 +1113,7 @@ label outsideMaze:
 
         "Jeer back." if himbully < -1:
             $ ending = -1
-            T shock "Me, get lost? You’re making stuff up."
+            T shocked "Me, get lost? You’re making stuff up."
             T angy "I saw more of that maze than you’ll ever see! You dimwits only ever follow the teacher or me."
             T neutral "Good thing, too. I couldn’t imagine the hospital bills if you tried to think for yourselves."
             Classmate1 "We don’t have to follow you, you know!"
