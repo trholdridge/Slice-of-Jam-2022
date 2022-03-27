@@ -27,11 +27,11 @@ default theyre = "they're"
 
 # Stats
 default himbully = 0
+define snailChoice = 0
 
 # Other variables
 define toy = "My Little Pony"
 define verb = ""
-define snailChoice = 0
 
 # Verb modification function for pronouns
 init python:
@@ -85,7 +85,7 @@ label sceneBeforeMaze:
         "\"Yeah, that’s stupid. Gen 4 of My Little Pony is so much better than Gen 3.\"":
             $ himbully -= 1
 
-        "\"I don’t care about what losers do.\"":
+        "\"I don’t really care about what losers do.\"":
             jump sceneEnterMaze
 
     Classmate1 "Why do you know about [toy]?"
@@ -173,7 +173,7 @@ label yarn:
 
 # GENERIC LABYRINTH
     $ verb = verbMod("trudge", "trudges")
-    "It’s hard to admit, but Ariadne is right. Theo has no idea which direction is out. [they!c] trudge after Ariadne as she rolls out her yarn ball."
+    "It’s hard to admit, but Ariadne is right. Theo has no idea which direction is out. [they!c] [verb] after Ariadne as she rolls out her yarn ball."
 
 label miniSnailMaze:
 
@@ -288,8 +288,8 @@ label vinnyPartOne:
 
     V "Theo… will you watch my vlogs?"
 
-    menu: # NOTE depending on stats up til this point, restrict certain choices? Up to tulasi
-        "\"I guess… if I’m stuck in this maze and have nothing else to do.\"":
+    menu:
+        "\"I guess… if I’m stuck in this maze and have nothing else to do.\"" if himbully >= 0:
             $ himbully += 1
             show V happy
             V "Wonderful, marvelous! Five regular moo-ers–I mean, viewers!"
@@ -302,7 +302,7 @@ label vinnyPartOne:
             V "To become a star, of course. My dream is to spread a-moo-sement to the masses!"
             show A happy
 
-        "\"Why would I ever watch a weirdo vlog?\"":
+        "\"Why would I watch a weirdo vlog?\"":
             $ himbully -= 1
             show A angy
             A "You can't call others weirdos!"
@@ -311,7 +311,7 @@ label vinnyPartOne:
             V "I am indeed a weirdo. And I’m proud of it!"
             show A neutral
 
-        "\"Pineapples and cows are literally the most uncool thing I’ve ever seen.\"":
+        "\"Pineapples and cows are literally the most uncool thing I’ve ever seen.\"" if himbully < 0:
             $ himbully -= 2
             show A angy
             A "There’s nothing wrong with pineapples and cows together! Besides, Vinny’s only half cow!"
@@ -415,7 +415,7 @@ label icarusPartOne:
             show I neutral
             I "So are you."
 
-        "\"Seems like a weakling thing to me.\"":
+        "\"Seems like a weakling thing to me.\"" if himbully < 0:
             $ himbully -= 1
             show I angy
             I "Bold words from a sprout!"

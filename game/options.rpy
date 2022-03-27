@@ -128,6 +128,8 @@ default preferences.text_cps = 0
 
 default preferences.afm_time = 15
 
+define config.menu_include_disabled = True
+
 
 ## Save directory ##############################################################
 ##
