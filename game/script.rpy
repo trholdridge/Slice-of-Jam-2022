@@ -65,6 +65,12 @@ image ariadne shocked = "images/ariadne_sprites/ariadne_shocked.png"
 image ariadne yarn1 = "images/ariadne_sprites/ariadne_yarn/ariadne_yarn_happy.png"
 image ariadne yarn2 = "images/ariadne_sprites/ariadne_yarn/ariadne_yarn_neutral.png"
 
+image corn entrance = "images/corn_entrance.png"
+image inside maze = "images/inside_maze.png"
+image inside maze yassified = "images/inside_maze_yassified.png"
+image suit frog = "images/suit_frog.png"
+image snail maze = "images/snail_maze.png"
+
 # ---------- The game starts here. ----------
 
 label start:
@@ -87,7 +93,7 @@ label start:
     T neutral "Cool. See you around, I guess."
 
 label sceneBeforeMaze:
-    scene black
+    scene corn entrance
     "A class of middle schoolers loiters around the entrance to a giant corn maze. Their teachers are taking attendance."
 
     Classmate1 "This is such a dumb field trip."
@@ -118,7 +124,7 @@ label sceneBeforeMaze:
 
 label sceneEnterMaze:
 
-    scene bg cornmaze
+    scene inside maze
 
     "Inside the corn maze, Theo takes a wrong left and loses [their] classmates."
 
@@ -127,9 +133,9 @@ label sceneEnterMaze:
     $ verb = verbMod("hope", "hopes")
     "Theo is sure they’re just around the corner. [they!c] [verb] [their] friends haven’t noticed [theyre] missing. It would be embarrassing to get lost in such a small maze."
     $ verb = verbMod("realize", "realizes")
-    "Every fork looks the same. Theo begins to feel dizzy. By the time [they] [verb] [theyre] hopelessly lost, the walls have ***********************corn maze background"
+    "Every fork looks the same. Theo begins to feel dizzy. [they!c] [verb] [theyre] hopelessly lost."
 
-    scene bg labyrinth
+    scene inside maze yassified
     with dissolve
 
     $ a_name = "???"
@@ -204,7 +210,7 @@ label yarn:
 
 label miniSnailMaze:
 
-    scene black
+    scene snail maze
 
     "Soon, they come across a curious square table. The top of it is deeply grooved in grid-like patterns, forming a miniature maze. Ariadne leaps atop the edge of the maze and peers inside it."
 
@@ -265,7 +271,7 @@ label miniSnailMaze:
 
 label afterSnail:
 
-    scene bg labyrinth
+    scene inside maze yassified
 
     "Theo and Ariadne double back on themselves several times. Fortunately, Ariadne’s yarn allows them to retrace their steps and try a different route."
 
@@ -279,6 +285,8 @@ label afterSnail:
     hide ariadne
 
 label vinnyPartOne:
+
+    scene inside maze yassified
 
     "Theo and Ariadne emerge into a small clearing. In the center of it sits a strange creature. Theo can only describe the creature as some sort of cow-centaur with a nerd torso. They are everything Theo dislikes."
 
@@ -389,6 +397,8 @@ label vinnyPartOne:
 
 label icarusPartOne:
 
+    scene inside maze yassified
+
     "Theo is less skeptical that Ariadne is actually leading him out, after meeting Vinny."
 
     show ariadne neutral at center
@@ -469,10 +479,12 @@ label icarusPartOne:
 
     "Icarus flies upwards, but the shadows of her wings remind Theo that she is watching." # * wHAT am i saying here icarus just gotta go
     "This time, Ariadne points out a direction to Theo and lets [them] lead the way. They make good progress."
-    "The last doorway, however, is blocked by the desk of a professional frog. The nameplate on his desk says \"FRANCIS.\""
 
 label frogBusinessman:
 
+    scene suit frog
+
+    "The last doorway, however, is blocked by the desk of a professional frog. The nameplate on his desk says \"FRANCIS.\""
     F "Greetings, travelers. Please sit and have some tea; I always enjoy company between three and seven pm. What brings you to my den on this charming afternoon?"
 
     menu:
@@ -536,7 +548,6 @@ label frogBusinessman:
 
     "Francis returns to his work, ignoring everything else."
 
-# GENREIC LABYRINTH
     A "You heard the frog, Theo! Find a valuable object for Francis to sell!"
 
     T shock "You don’t have one?"
@@ -563,6 +574,8 @@ label frogBusinessman:
             jump askVinny
 
 label askAriadne:
+
+    scene inside maze yassified
 
     "Theo retraces [their] steps to the hallway outside of Francis’ area."
 
@@ -596,6 +609,7 @@ label askIcarus:
         show ariadne neutral
         A "Worth a shot."
 
+    scene inside maze yassified
     "Theo retraces [their] steps with Ariadne's yarn to the hallway where [they] met Icarus."
 
     # show labyrinth background
@@ -647,9 +661,11 @@ label askVinny:
     show ariadne happy
     A "Worth a shot!"
 
+    scene inside maze yassified
+
     "Theo retraces [their] steps with Ariadnes’ yarn until they arrive back at Vinny’s room."
 
-# center of labyrinth
+    # center of labyrinth
     show vinny shocked at right
     V "Moo’s there? I mean, who’s there?"
     show vinny neutral
@@ -759,7 +775,7 @@ label askVinny:
 
 label frogEnd:
 
-    # GENERIC LABYRINTH (or f’s room?)
+    scene suit frog
 
     if gift != "nothing":
 
@@ -801,6 +817,8 @@ label frogEnd:
 
 label argument:
     # generic labyrinth
+
+    scene inside maze yassified
 
     "After a while of walking, Theo and Ariadne happen upon a familiar length of yarn."
 
@@ -1055,6 +1073,7 @@ label vinnyPartTwo:
 
 label outsideMaze:
     # outside maze
+    scene corn entrance
 
     stop music fadeout 1.0
     play music "audio/Kevin MacLeod - Nu Flute.mp3"
