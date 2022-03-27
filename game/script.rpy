@@ -3,7 +3,7 @@
 define T = Character("Theo", image="theo")
 define A = DynamicCharacter("a_name", image="ariadne")
 define V = DynamicCharacter("v_name", image="vinny")
-define I = Character("Icarus")
+define I = Character("Icarus", image="icarus")
 define F = Character("Francis")
 define E = Character("Eduardo")
 
@@ -23,6 +23,7 @@ define snailChoice = 0
 # Other variables
 define toy = "My Little Pony"
 define verb = ""
+define gift = ""
 
 # Verb modification function for pronouns
 init python:
@@ -39,14 +40,27 @@ image side theo sad = "images/theo_sprites/theo_sad.png"
 image side theo angy = "images/theo_sprites/theo_angry.png"
 image side theo shocked = "images/theo_sprites/theo_shocked.png"
 
+image vinny happy = "images/vinny_sprites/vinny_clothed_happy.png"
+image vinny neutral = "images/vinny_sprites/vinny_clothed_neutral.png"
+image vinny sad = "images/vinny_sprites/vinny_clothed_sad.png"
+image vinny shocked = "images/vinny_sprites/vinny_clothed_shocked.png"
+
+image icarus happy = "images/icarus_sprites/icarus_happy.png"
+image icarus neutral = "images/icarus_sprites/icarus_neutral.png"
+image icarus angy = "images/icarus_sprites/icarus_angry.png"
+
+image ariadne happy = "images/ariadne_sprites/ariadne_happy.png"
+image ariadne neutral = "images/ariadne_sprites/ariadne_neutral.png"
+image ariadne sad = "images/ariadne_sprites/ariadne_sad.png"
+image ariadne angy = "images/ariadne_sprites/ariadne_angry.png"
+image ariadne shocked = "images/ariadne_sprites/ariadne_shocked.png"
 
 # ---------- The game starts here. ----------
 
 label start:
-    show T neutral
+    T neutral "Hey, I'm Theo."
     menu:
-        "Hey, I'm Theo. What pronouns should I use?"
-
+        T "What pronouns should I use?"
         "He/him":
             $ they = "he"
             $ them = "him"
@@ -111,33 +125,33 @@ label sceneEnterMaze:
     $ a_name = "???"
     A "Are you lost? What a cat-tastrophe! Nya-ha-ha!"
 
-    T shock "W-Who’s there?"
+    T shocked "W-Who’s there?"
 
-    show A happy
+    show ariadne happy
     A "Hi there! You look like you need some help!"
 
     T angy "I don’t need help!"
 
     A "Luckily for you, I’m a generous feline!"
-    show A neutral
+    show ariadne neutral
     A "The sooner you’re gone, the better."
-    show A happy
+    show ariadne happy
     A "There’s Icarus flying over us now. Icarus! Come whisk-er this trespasser away!"
 
     "Theo looks up. A white winged figure briefly silhouettes against the blue sky. A distant response floats down."
 
-    show A shock
+    show ariadne shocked
 
     I "What am I, Ariadne, your personal chauffeur?"
     $ a_name = "Ariadne"
 
-    show A angy
+    show ariadne angy
     A "You–hiss!"
-    show A neutral
+    show ariadne neutral
 
     "Ariadne grooms herself with a huff."
 
-    show A happy
+    show ariadne happy
     A "That lazy bum. Now it’s up to me to help you out. Stay paws-itive, you’ll be home in no time!"
 
     "Theo isn’t sure whether [theyre] hallucinating. A flying person and a talking cat? The sun must’ve gotten to [them]. Perhaps this is all a fever dream and [theyre] going to wake up any minute."
@@ -148,24 +162,24 @@ label sceneEnterMaze:
             $ himbully -= 1
 
         "\"I can find the way out by myself.\"":
-            show A happy
+            show ariadne happy
             A "You have no choice but to follow me!"
             jump yarn
 
         "\"I don’t need any help from you weirdos.\"":
             $ himbully -= 1
 
-    show A neutral
+    show ariadne neutral
     A "Watch who you’re calling a weirdo."
-    show A happy
+    show ariadne happy
     A "Anyway, you have no choice but to follow me!"
 
 label yarn:
-    show A neutral yarn
+    show ariadne neutral
     A "Without this yarn, you have no way of tracking where you’ve come from in the labyrinth. And the only one who can use this yarn… "
-    show A happy yarn
+    show ariadne happy
     A "... is me-ow!"
-    show A happy
+    show ariadne happy
 
     "Theo scoffs. *** However, one thing sticks out to [them]."
 
@@ -173,7 +187,7 @@ label yarn:
 
     A "How a-mew-sing! You seem to have gotten turned around without even trying. That’s a fresh talent!"
     A "Follow me, lost human!"
-    hide A
+    hide ariadne
 
     $ verb = verbMod("trudge", "trudges")
     "It’s hard to admit, but Ariadne is right. Theo has no idea which direction is out. [they!c] [verb] after Ariadne as she rolls out her yarn ball."
@@ -184,7 +198,7 @@ label miniSnailMaze:
 
     "Soon, they come across a curious square table. The top of it is deeply grooved in grid-like patterns, forming a miniature maze. Ariadne leaps atop the edge of the maze and peers inside it."
 
-    show A happy at left
+    show ariadne happy at left
     A "Eduardo? Is that you?"
 
     "Theo follows Ariadne’s line of sight to spot Eduardo within the maze. A trail of slime marks Eduardo’s pathing, which double-backs and loops around. He is having difficulty escaping the maze because he is a tiny snail."
@@ -192,17 +206,17 @@ label miniSnailMaze:
 
     E "Eh… eh…. ehhh-xaust-ehhhhd…"
 
-    show A sad
+    show ariadne sad
     A "Oh no, you poor thing."
 
     "Ariadne cranes her neck to figure out the solution to the table-maze, but she is too short to see the entire thing at once. She points a paw at Theo."
 
-    show A neutral
+    show ariadne neutral
     A "You…"
 
     T neutral "Theo."
 
-    show A happy
+    show ariadne happy
     A "...Theo, be a kitten and help him out!"
 
     menu: # stat checks for these choices?? → tulasi help
@@ -213,31 +227,31 @@ label miniSnailMaze:
             T neutral "Go forward until you hit the wall, then take two rights and a left."
             E "W… Whoa…"
             "Theo gets the impression that Eduardo is grateful."
-            show A neutral
+            show ariadne neutral
 
         "\"Looks lame.\"":
             E "W… Ehh…"
-            show A neutral
+            show ariadne neutral
             "Theo gets the impression that Eduardo is tired and sad."
 
         "Use a block to wall Eduardo into a box.":
             $ himbully -= 1
             $ snailChoice -= 1
-            show A neutral
+            show ariadne neutral
             E "W… Wehh!"
             "Theo gets the impression that Eduardo is scared."
-            show A angy
+            show ariadne angy
             A "That’s not very mice!"
             "Ariadne uses a paw to bat your block away from Eduardo."
-            show A neutral
+            show ariadne neutral
             A "Let’s not paws for too long."
             jump afterSnail
 
     "Ariadne studies Theo with an unreadable expression."
 
-    show A happy
+    show ariadne happy
     A "Let’s not paws for too long!"
-    hide A
+    hide ariadne
 
 label afterSnail:
 
@@ -245,46 +259,45 @@ label afterSnail:
 
     "Theo and Ariadne double back on themselves several times. Fortunately, Ariadne’s yarn allows them to retrace their steps and try a different route."
 
-    show A happy at center
+    show ariadne happy at center
     A "Meow, don’t get the wrong idea. I do know where we are going. However, the labyrinth shifts around every so often, so you can never memorize a path for the next day!"
 
     T neutral "Huh? You said you know where you’re going, but also that you don’t know any paths."
 
     A "Nya-ha-ha! It’s never meow-notonous!"
     A "The labyrinth is a great retirement spot."
-    hide A
+    hide ariadne
 
 label vinnyPartOne:
 
     "Theo and Ariadne emerge into a small clearing. In the center of it sits a strange creature. Theo can only describe the creature as some sort of cow-centaur with a nerd torso. They are everything Theo dislikes."
 
-    show V sad at right
+    show vinny sad at right
 
     "When they speak, their voice is slow and surprisingly deep."
 
     $ v_name = "???"
     V "Only three views today… one less than yesterday. I’ll never be famous."
 
-    show A shock at left
+    show ariadne shocked at left
     A "Vinny, what have I told you about checking your views too often?"
-    show A neutral
+    show ariadne neutral
 
     $ v_name = "Vinny"
     V "I want to be a moo-vie star…"
 
-    show A happy
+    show ariadne happy
     A "I promise, you’re famous to me! That one less viewer was only because Eduardo was stuck in a maze today, he didn’t mean to miss your stream."
-    show A neutral
+    show ariadne neutral
 
     "Vinny shakes his head and lows."
 
-    show V angy
     V "Only my friends watch me… when will the world recognize my looo-minosity?"
 
-    show A happy
+    show ariadne happy
     A "Soon, I’m paw-sitive! Now perk up, we have a trespasser today!"
 
-    show V neutral
+    show vinny neutral
     V "Moo… a guest?"
 
     if himbully > 0:
@@ -298,43 +311,43 @@ label vinnyPartOne:
     menu:
         "\"I guess… if I’m stuck in this maze and have nothing else to do.\"" if himbully >= 0:
             $ himbully += 1
-            show V happy
+            show vinny happy
             V "Wonderful, marvelous! Five regular moo-ers–I mean, viewers!"
-            show A happy
+            show ariadne happy
 
         "\"Why?\"":
-            show V shocked
+            show vinny shocked
             V "Why… why! It’s been so long since anybody asked me that question."
             "Vinny clears his throat with a great hacking cough."
             V "To become a star, of course. My dream is to spread a-moo-sement to the masses!"
-            show A happy
+            show ariadne happy
 
         "\"Why would I watch a weirdo vlog?\"":
             $ himbully -= 1
-            show A angy
+            show ariadne angy
             A "You can't call others weirdos!"
-            show V neutral
+            show vinny neutral
             "Vinny draws himself up. His hair seems to puff up with his spirit."
             V "I am indeed a weirdo. And I’m proud of it!"
-            show A neutral
+            show ariadne neutral
 
         "\"Pineapples and cows are literally the most uncool thing I’ve ever seen.\"" if himbully < 0:
             $ himbully -= 2
-            show A angy
+            show ariadne angy
             A "There’s nothing wrong with pineapples and cows together! Besides, Vinny’s only half cow!"
-            show V neutral
+            show vinny neutral
             "Vinny draws himself up. His hair seems to puff up with his spirit."
             V "I am indeed half cow, like my brother. He was the Minotaur. I’m proud of it!"
-            show A neutral
+            show ariadne neutral
 
-    show V neutral
+    show vinny neutral
     A "Regardless, Theo here got lost on a school trip. I’m leading [them] out of the labyrinth."
 
     T angy "Don’t say it in such an embarrassing way!"
 
     "Ariadne ignores Theo to address Vinny."
 
-    show A happy
+    show ariadne happy
     if snailChoice == 1:
         A "Theo has some rough edges, but I’m confident that there’s a good person somewhere deep down there! [they!c] helped Eduardo out just now."
     elif snailChoice == 0:
@@ -342,105 +355,107 @@ label vinnyPartOne:
     else:
         A "I’m not sure that Theo is the kind of viewer you want. [they!c] walled Eduardo into the table-maze just now!"
 
-    show V shock
+    show vinny shocked
     V "Interesting…"
-    show V neutral
+    show vinny neutral
     V "No matter your character, Theo, I’m glad you are escaping the labyrinth. You belong to your School Trip."
 
-    show A happy
+    show ariadne happy
     A "It’s school trip, all lowercase!"
-    show A neutral
+    show ariadne neutral
 
     V "Right. I would help you, but…"
-    show V sad
+    show vinny sad
     V "Unfortunately, my line is bound to this labyrinth with a curse. I will never be able to leave. My only hope of becoming famous is my vlogging channel."
-    show V neutral
+    show vinny neutral
     V "So I would really appreciate your views."
-    show V sad
+    show vinny sad
     V "Thanks for stopping by…"
 
-    show A happy
+    show ariadne happy
     A "Anytime, Vinny! You know I don’t have any hobbies."
-    hide A
-    hide V
+    hide ariadne
+    hide vinny
 
 label icarusPartOne:
 
     "Theo is less skeptical that Ariadne is actually leading him out, after meeting Vinny."
 
-    show A center
+    show ariadne neutral at center
     A "You should know, Theo, that what I admire most about Vinny is that he’s not afraid to be himself. I wish more people would see that, so that he could achieve his goal."
 
     "Ariadne fluffs her tail thoughtfully."
 
+    show ariadne happy
     A "Also, neither Vinny nor his line is actually cursed. So don’t feel too bad for him."
 
-    T shock "Then why does he stay in that one place?"
+    T shocked "Then why does he stay in that one place?"
 
-    show A neutral
+    show ariadne neutral
     A "In reality, he is simply too tall for the doorways in this labyrinth."
 
     T neutral "Not too wide?"
 
-    show A happy
+    show ariadne happy
     A "Nya-ha-ha! Don’t ask him that to his face, he’ll grow insecure about his body!"
-    hide A
+    hide ariadne
 
     "It is another few minutes before the winged person from the very beginning swoops in from above. Theo sighs. This is just one encounter after another."
 
-    show I neutral at right
+    show icarus neutral at right
     I "You dimwits still tryna get out of here?"
 
-    show A happy at left
+    show ariadne happy at left
     A "I don’t see you helping!"
 
-    show I happy
+    show icarus happy
     I "Hah. And waste more time with you, when I could be listening to {b}DEATH METAL{/b}?"
-    show I neutral
+    show icarus neutral
 
     "Icarus cracks her knuckles. Permanent scowl lines frame her mouth. She narrows her eyes."
 
-    show A neutral
-    show I angy
+    show ariadne neutral
+    show icarus angy
     I "As if I would do anything so weak."
-    show I neutral
+    show icarus neutral
 
-    show A happy
+    show ariadne happy
     A "Did you watch Vinny’s vlog today?"
 
-    show I angy
+    show icarus angy
     I "Of course I did."
 
     menu:
         #(if watch, "i plan to watch it to"?)
         "\"You… watch Vinny’s vlog?\" Icarus does not seem the type.":
             $ himbully += 1
-            show I happy
+            show icarus happy
             I "You don’t?"
 
         "\"Boring.\"":
-            show I neutral
+            show icarus neutral
             I "So are you."
 
         "\"Seems like a weakling thing to me.\"" if himbully < 0:
             $ himbully -= 1
-            show I angy
+            show icarus angy
             I "Bold words from a sprout!"
 
-    show I neutral
+    show icarus neutral
 
-    show A happy
+    show ariadne happy
     A "Have you come to help us, Icarus?"
 
     I "As if. And don’t ask me to, because I can leave whenever I want."
 
     A "Then why do you keep coming back?"
 
-    show I angy
+    show icarus angy
     I "I wouldn’t come here at all if I weren’t so bored!"
-    show I neutral
+    show icarus neutral
     I "Whatever."
     I "Don’t mind me. Go on, this should be entertaining."
+    hide icarus
 
     "Icarus flies upwards, but the shadows of her wings remind Theo that she is watching." # * wHAT am i saying here icarus just gotta go
     "This time, Ariadne points out a direction to Theo and lets [them] lead the way. They make good progress."
@@ -450,5 +465,342 @@ label frogBusinessman:
 
     F "Greetings, travelers. Please sit and have some tea; I always enjoy company between three and seven pm. What brings you to my den on this charming afternoon?"
 
+    menu:
+        "\"Your desk is blocking the path to exit the labyrinth.\"":
+            $ himbully += 1
+            show ariadne happy
+            A "Yes, Francis, we need your help! Theo here is on his way out of our home."
+
+        "Wait for Ariadne to respond.":
+            $ himbully += 0
+            show ariadne happy
+            A "Francis, we need your help! Theo here is on his way out of our home, but your desk is blocking the path."
+
+        "We’re not here to visit you.":
+            $ himbully -= 1
+            show ariadne neutral
+            A "We’re here for a different reason. But of course, any other day I would be happy to visit you!"
+
+            show ariadne happy
+            A "Francis, we need your help! Theo here is on his way out of our home, but your desk is blocking the path."
+
+    F "Hm…"
+
+    show ariadne neutral
+
+    F "I’m afraid I cannot help you right now."
+    F "My computer is running important calculations on the intrinsic value of several new company stocks."
+
+    if himbully > 2:
+        T happy "Like, math?"
+        T neutral "I uh... I sorta like math."
+    elif himbully > -2:
+        T "Stocks?"
+    else:
+        T "Math? That’s a half-baked reason."
+
+    F "Observe here."
+
+    "Francis shows them a complicated collection of graphs and spreadsheets on his screen. He has a command line window open, on which numbers scroll past endlessly."
+
+    F "This is essential to maximize my profits from the stock market income stream."
+
+    show ariadne sad
+
+    F "So, I am loathe to move my computer and risk jeopardizing these calculations. I hope you understand."
+
+    T neutral "That’s not how computers work…"
+
+    A "Is there any way we can convince you to help? You could run these numbers later."
+
+    F "Well, investment is time-sensitive."
+
+    show ariadne neutral
+
+    F "Perhaps if you brought me an object of equal value to the profits I would lose from the delay…"
+    F "I could sell it in my online shop."
+    F "Then, I could assist you."
+
+    show ariadne happy
+    A "Yes! Thank you, Francis!"
+
+    "Francis returns to his work, ignoring everything else."
+
+# GENREIC LABYRINTH
+    A "You heard the frog, Theo! Find a valuable object for Francis to sell!"
+
+    T shock "You don’t have one?"
+
+    show ariadne neutral
+    A "No."
+    show ariadne happy
+    A "I don’t need meow-terial possessions when I have such good friends!"
+    A "Anyway, it’s your choice how to approach this challenge."
+
+    "Theo considers [their] options…"
+    "[they!c] could just refuse to do anything, and leave Ariadne to figure something out."
+    "On the other hand, Icarus can fly out of the labyrinth at will. Perhaps she could help fetch something from the outside world."
+    "Vinny might also have something."
+
+    menu:
+        "Do nothing.":
+            jump askAriadne
+
+        "Ask Icarus.":
+            jump askIcarus
+
+        "Ask Vinny.":
+            jump askVinny
+
+label askAriadne:
+
+    "Theo retraces [their] steps to the hallway outside of Francis’ area."
+
+    T angy "I really don’t have anything on me. And I can’t ask anyone else."
+    T neutral "You have to have something, Ariadne."
+    T neutral "What about your yarn ball?"
+
+    show ariadne angy
+    A "Now you’re being silly on purpose!"
+    A "I would never give up my yarn ball."
+
+    T neutral "I don’t see the problem here. You could make Icarus get you another one."
+
+    show ariadne sad
+    A "Hm… to give up my yarn ball of four decades…"
+    A "Just so that Theo can leave…"
+    show ariadne neutral
+    A "Not worth it."
+
+    $ gift = "nothing"
+    jump frogEnd
+
+label askIcarus:
+
+    T neutral "What if we asked Icarus?"
+
+    if himbully > 1:
+        show ariadne happy
+        A "Good idea!"
+    else:
+        show ariadne neutral
+        A "Worth a shot."
+
+    "Theo retraces [their] steps with Ariadne's yarn to the hallway where [they] met Icarus."
+
+    # show labyrinth background
+
+    T neutral "Icarus, you there?"
+
+    show icarus happy at right
+    I "Who has summoned me?"
+    show icarus neutral
+    I "Oh, it’s you. Still loitering here, sprout?"
+
+    T angy "Not for much longer…"
+    T neutral "…if you help me."
+
+    show icarus angy
+    I "Ehh, do I seem like a problem solving roll of duct tape to you? I’m not the helpful type!"
+
+    if himbully > 2:
+        show icarus neutral
+        I "I suppose, though, since you haven’t been the worst person who could have gotten lost here, I could do you a favor this once."
+        show icarus angy
+        I "You’d better pay me back."
+        show icarus happy
+        I "What do you want, kid?"
+        T "I need something valuable to give to Francis so he’ll move his desk and let us pass."
+        I "Ha!"
+        I "I’ve got the thing for you. I was going to give this to Francis myself later."
+        "Icarus produces a fedora with a wide brim."
+        T happy "Perfect!"
+        show ariadne happy
+        A "Thanks, Icarus! Don’t forget, Vinny’s streaming tomorrow at seven!"
+        show icarus mad
+        I "Don’t insult me. My memory is working fine."
+        $ gift = "fedora"
+
+    else:
+        show icarus neutral
+        I "Seriously though, you’re dreaming. I don’t help posers who bully people to make themselves feel better."
+        show icarus angy
+        I "Even in such a short time, I can tell that you don’t care enough about others to make me care about you."
+        show icarus happy
+        I "But it’s funny that you thought you had a chance!"
+        $ gift = "nothing"
+
+    hide icarus
+    jump frogEnd
+
+label askVinny:
+    show ariadne happy
+    A "Worth a shot!"
+
+    "Theo retraces [their] steps with Ariadnes’ yarn until they arrive back at Vinny’s room."
+
+# center of labyrinth
+    show vinny shocked at right
+    V "Moo’s there? I mean, who’s there?"
+    show vinny neutral
+    V "I need to practice talking without this lisp…"
+
+    show ariadne happy
+    A "We’re back!"
+
+    show vinny happy
+    V "So soon? Moo you want to hang out?"
+
+    show ariadne neutral
+
+    show vinny sad
+    V "Moo… moo… do…"
+    show vinny neutral
+
+    show ariadne happy
+
+    T neutral "We’re looking for a valuable object to give Francis so he’ll stop blocking the path to get out of here."
+    T neutral "Got anything that fits the bill?"
+
+    V "Hum… my vlogging camera was pretty expensive…"
+    V "That’s what Icarus told me. She got it for me on my birthday. I don’t know how she could have afforded it, she said it’s worth thousands."
+    show vinny sad
+    V "I could never give it up."
+
+    show vinny neutral
+    show ariadne neutral
+    V "Try someone else. I can’t help you."
+
+    menu:
+        "Bully Vinny for something, anything.":
+            $ himbully -= 1
+
+        "Try Icarus.":
+            hide vinny
+            jump askIcarus
+
+        "You can’t get an object, then.":
+            hide vinny
+            jump askAriadne
+
+    show vinny shocked
+
+    show ariadne neutral
+
+    T angy "Come on, you can’t say that you’ve been stuck here with no other objects whatsoever this entire time!"
+
+    show ariadne shocked
+
+    T angy "I’ll never watch you stream if you don’t cough something up!"
+
+    show ariadne angy
+    A "Don’t bully him!"
+
+    show vinny sad
+    V "I can’t afford to lose any viewers…"
+
+    T angy "Nobody wants to watch you right now because you’re just a dumb cow stuck in a labyrinth."
+
+    A "He’s a bull, not a cow!"
+
+    T neutral "This is your one chance to gain viewers. But if you don’t help me…"
+
+    show vinny shocked
+    show ariadne shocked
+
+    T angy "I’ll tell all my friends to never watch you either!"
+    T angy "And believe me, I have a lot of friends!"
+
+    show ariadne angy
+    A "I don’t believe you."
+
+    show vinny neutral
+    V "I’m not just a dumb cow. I love who I am."
+    show vinny sad
+    V "But since you put it that way… I do need more viewers."
+
+    T happy "I’m glad you came around."
+
+    V "The problem is, I don’t have anything else valuable, other than my shirt."
+
+    show vinny shocked
+    show ariadne shocked
+    T "Then I want your shirt."
+
+    V "That’s–that’s indecent!"
+
+    "Under Theo’s insistence, Vinny reluctantly hands over his shirt."
+
+    show ariadne sad
+
+    show vinny shocked
+    V "It’s cold…"
+    show vinny sad
+
+    T happy "Perfect."
+    T shocked "Where did all these muscles come from, though?"
+
+    V "All there is to do here is exercise…"
+    hide vinny
+
+    $ gift = "shirt"
+
+    jump frogEnd
+
+label frogEnd:
+
+    # GENERIC LABYRINTH (or f’s room?)
+
+    if gift != "nothing":
+
+        "[gift!c] in hand, Ariadne and Theo return to Francis’ workstation."
+
+        show ariadne neutral
+        A "Francis, we’ve found an object for you to sell!"
+
+        F "Hello again."
+        F "This is… a [gift]?"
+
+        show ariadne happy
+        A "It’s not just any [gift]! This is unique!"
+
+        T neutral "I put in so much effort to get it, so it’d better be enough…"
+
+        F "I love it!"
+        F "I know exactly what description to write for this."
+
+        if gift == "shirt":
+            F "This pineapple dream will make you gleam!"
+        else:
+            F "This spiffy fedora has a gentleman’s aura!"
+
+    else:
+        "Having found nothing, Ariadne and Theo return to Francis’ workstation."
+
+        show ariadne sad
+        A "Francis… we’ve failed you. We don’t have anything to sell."
+
+        F "That is disappointing, but please do not feel too bad."
+
+        show ariadne happy
+
+        F "During your absence, I discovered a lustrous rock!"
+        F "Although your object would have been worth more, this will do just fine."
+
+    "Francis lifts his desk clean off of the ground and motions for Ariadne and Theo to make their way through."
+
+label vinnyPartTwo:
+
+label argument:
+
+label leaveLabyrinth:
+
+label outsideMaze:
+
+    stop music fadeout 1.0
+    play music "audio/Kevin MacLeod - Nu Flute.mp3"
+
 label endGame:
+
+    "The End"
     return
