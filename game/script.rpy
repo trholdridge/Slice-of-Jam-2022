@@ -52,7 +52,7 @@ label start:
         "They/them":
             $ they = "they"
 
-    T neutral "Cool. See you around I guess."
+    T neutral "Cool. See you around, I guess."
 
 label sceneBeforeMaze:
     scene black
@@ -86,6 +86,8 @@ label sceneBeforeMaze:
 
 label sceneEnterMaze:
 
+    scene bg cornmaze
+
     "Inside the corn maze, Theo takes a wrong left and loses [their] classmates."
 
     T angy "What the crap? Did those posers ditch me?"
@@ -94,6 +96,9 @@ label sceneEnterMaze:
     "Theo is sure they’re just around the corner. [they!c] [verb] [their] friends haven’t noticed [theyre] missing. It would be embarrassing to get lost in such a small maze."
     $ verb = verbMod("realize", "realizes")
     "Every fork looks the same. Theo begins to feel dizzy. By the time [they] [verb] [theyre] hopelessly lost, the walls have ***********************corn maze background"
+
+    scene bg labyrinth
+    with dissolve
 
     $ a_name = "???"
     A "Are you lost? What a cat-tastrophe! Nya-ha-ha!"
@@ -162,11 +167,12 @@ label yarn:
     A "Follow me, lost human!"
     hide A
 
-# GENERIC LABYRINTH
     $ verb = verbMod("trudge", "trudges")
     "It’s hard to admit, but Ariadne is right. Theo has no idea which direction is out. [they!c] [verb] after Ariadne as she rolls out her yarn ball."
 
 label miniSnailMaze:
+
+    scene black
 
     "Soon, they come across a curious square table. The top of it is deeply grooved in grid-like patterns, forming a miniature maze. Ariadne leaps atop the edge of the maze and peers inside it."
 
@@ -226,6 +232,8 @@ label miniSnailMaze:
     hide A
 
 label afterSnail:
+
+    scene bg labyrinth
 
     "Theo and Ariadne double back on themselves several times. Fortunately, Ariadne’s yarn allows them to retrace their steps and try a different route."
 
