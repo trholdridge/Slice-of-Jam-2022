@@ -1,6 +1,4 @@
-﻿# The script of the game goes in this file.
-
-# Declare characters used by this game. The color argument colorizes the
+﻿# Declare characters used by this game. The color argument colorizes the
 # name of the character.
 define T = Character("Theo", image="theo")
 define A = DynamicCharacter("a_name", image="ariadne")
@@ -11,13 +9,6 @@ define E = Character("Eduardo")
 
 define Classmate1 = Character("Classmate 1")
 define Classmate2 = Character("Classmate 2")
-
-# Character images
-#image side theo happy = ""
-#image side theo neutral = ""
-#image side theo sad = ""
-#image side theo angy = ""
-#image side theo shocked = ""
 
 # Pronoun variables
 default they = "they"
