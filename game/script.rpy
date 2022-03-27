@@ -32,6 +32,14 @@ init python:
         else:
             return verbHeShe
 
+# Images
+image side theo happy = "images/theo_sprites/theo_happy.png"
+image side theo neutral = "images/theo_sprites/theo_neutral.png"
+image side theo sad = "images/theo_sprites/theo_sad.png"
+image side theo angy = "images/theo_sprites/theo_angry.png"
+image side theo shocked = "images/theo_sprites/theo_shocked.png"
+
+
 # ---------- The game starts here. ----------
 
 label start:
