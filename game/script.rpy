@@ -493,17 +493,17 @@ label frogBusinessman:
     menu:
         "\"Your desk is blocking the path to exit the labyrinth.\"":
             $ himbully += 1
-            show ariadne happy
+            show ariadne happy at left
             A "Yes, Francis, we need your help! Theo here is on his way out of our home."
 
         "Wait for Ariadne to respond.":
             $ himbully += 0
-            show ariadne happy
+            show ariadne happy at left
             A "Francis, we need your help! Theo here is on his way out of our home, but your desk is blocking the path."
 
         "We’re not here to visit you.":
             $ himbully -= 1
-            show ariadne neutral
+            show ariadne neutral at left
             A "We’re here for a different reason. But of course, any other day I would be happy to visit you!"
 
             show ariadne happy
@@ -784,7 +784,7 @@ label frogEnd:
 
         "[gift!c] in hand, Ariadne and Theo return to Francis’ workstation."
 
-        show ariadne neutral
+        show ariadne neutral at left
         A "Francis, we’ve found an object for you to sell!"
 
         F "Hello again."
@@ -827,7 +827,7 @@ label argument:
 
     T shock "We’ve been here before."
 
-    show ariadne happy
+    show ariadne happy at left
     A "Sometimes, it happens."
     show ariadne neutral
     A "Let’s go back to the right turn instead of the left…"
@@ -894,7 +894,7 @@ label argument:
 
         "Icarus lands with a flurry of feathers. Her face is dark."
 
-        show icarus angy
+        show icarus angy at right
         I "I’ve had enough of this one too."
         hide ariadne
 
@@ -912,7 +912,7 @@ label vinnyPartTwo:
 
     "Sullen, Theo re-arrives at Vinny’s."
     if gift == "pineapple shirt":
-        show vinny shocked2
+        show vinny shocked2 at right
         V "Back again?"
 
         if hasAri == 1:
@@ -993,7 +993,7 @@ label vinnyPartTwo:
         hide vinny
         hide ariadne
     else:
-        show vinny shocked
+        show vinny shocked at right
         V "Back again?"
 
         if hasAri == 1:
