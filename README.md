@@ -7,13 +7,13 @@ Play as Theo, who gets lost in a corn maze on a school trip. Theo is a bully, bu
 Features:
 - Talking cat (with yarn!)
 - Punk Icarus
-- The Minotaur's bullied cow-centaur brother
+- The Minotaur's cow-centaur brother
 - Frog in a suit
 - Tired snail
 - Customizable pronouns for Theo
 - Content warning: bad puns
 
-Currently, the game is complete. The assets and writing might be polished more later. Created in <48 hours for the Slice of Game Jam.
+Currently, the game is complete. The assets and writing might be polished more later. Created in <48 hours for the Slice of Jam visual novel game jam.
 
 Art by [imjumokay](https://github.com/victoria-adebiyi), coding by [sacredbagel](https://github.com/trholdridge), and writing by [rustle-rabbit](https://github.com/EuannGu).
 
