@@ -9,6 +9,7 @@ define E = Character("Eduardo")
 
 define Classmate1 = Character("Classmate 1")
 define Classmate2 = Character("Classmate 2")
+define Outcast = Character("Outcast")
 define Teacher = Character("Teacher")
 
 # Pronoun variables
@@ -401,7 +402,7 @@ label icarusPartOne:
 
     scene inside maze yassified
 
-    "Theo is less skeptical that Ariadne is actually leading him out, after meeting Vinny."
+    "Theo is less skeptical that Ariadne is actually leading [them] out, after meeting Vinny."
 
     show ariadne neutral at center
     A "You should know, Theo, what I admire most about Vinny is that he’s not afraid to be himself. I wish more people would see that, so that he could achieve his goal."
@@ -494,12 +495,12 @@ label frogBusinessman:
         "\"Your desk is blocking the path to exit the labyrinth.\"":
             $ himbully += 1
             show ariadne happy at left
-            A "Yes, Francis, we need your help! Theo here is on his way out of our home."
+            A "Yes, Francis, we need your help! Theo here is on [their] way out of our home."
 
         "Wait for Ariadne to respond.":
             $ himbully += 0
             show ariadne happy at left
-            A "Francis, we need your help! Theo here is on his way out of our home, but your desk is blocking the path."
+            A "Francis, we need your help! Theo here is on [their] way out of our home, but your desk is blocking the path."
 
         "We’re not here to visit you.":
             $ himbully -= 1
@@ -507,7 +508,7 @@ label frogBusinessman:
             A "We’re here for a different reason. But of course, any other day I would be happy to visit you!"
 
             show ariadne happy
-            A "Francis, we need your help! Theo here is on his way out of our home, but your desk is blocking the path."
+            A "Francis, we need your help! Theo here is on [their] way out of our home, but your desk is blocking the path."
 
     F "Hm…"
 
@@ -1098,7 +1099,7 @@ label outsideMaze:
 
     Teacher "Congratulations. Next time, let someone know before wandering off."
 
-    "Theo rejoins his friends, who jeer at him."
+    "Theo rejoins [their] friends, who jeer at [them]."
 
     Classmate1 "Got lost, Theo?"
 
@@ -1127,7 +1128,8 @@ label outsideMaze:
             $ ending = 0
             T shocked "Me, get lost? You’re making stuff up."
             T neutral "I only go where I want to go."
-            "Theo looks wistfully at the dolls in the hands of that student he was making fun of earlier."
+            $ verb = verbMod("were", "was")
+            "Theo looks wistfully at the dolls in the hands of that student [they] [verb] making fun of earlier."
             Classmate2 "You’re too cool! Find anything interesting?"
             T neutral "So there was this talking cat…"
             Classmate1 "Really?!"
@@ -1150,10 +1152,10 @@ label endGame:
 
     if ending == 1:
         "Wow, you made choices that changed Theo to become nicer!"
-        "That must have been difficult. He’s quite stubborn."
+        "That must have been difficult. [theyre!c] quite stubborn."
     elif ending == 0:
         "Somehow, Theo barely changed at all in the labyrinth."
-        "He’s quite stubborn!"
+        "[theyre!c] quite stubborn!"
     else:
         "I can’t help but think that you could have been a nicer person today."
         "Does Theo feel bad at all? ><"
