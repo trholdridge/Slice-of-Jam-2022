@@ -1,4 +1,4 @@
-# Slice-of-Jam-2022
+# Journey to the Center of the Corn: Slice of Jam 2022
 
 Posted on [itch.io](https://rustle-rabbit.itch.io/journey-to-the-center-of-the-corn).
  
