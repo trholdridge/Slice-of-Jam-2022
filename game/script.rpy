@@ -201,7 +201,7 @@ label yarn:
     show ariadne yarn1
     A "... is me-ow!"
 
-    "Theo scoffs. *** However, one thing sticks out to [them]."
+    "Theo scoffs. However, one thing sticks out to [them]."
 
     T neutral "Labyrinth? This is a corn maze."
 
