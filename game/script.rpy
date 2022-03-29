@@ -1,16 +1,17 @@
 ﻿# Declare characters used by this game. The color argument colorizes the
 # name of the character.
-define T = Character("Theo", image="theo")
-define A = DynamicCharacter("a_name", image="ariadne")
-define V = DynamicCharacter("v_name", image="vinny")
-define I = Character("Icarus", image="icarus")
-define F = Character("Francis")
-define E = Character("Eduardo")
+define T = Character("Theo", image="theo", color="c7a6f9")
+define A = DynamicCharacter("a_name", image="ariadne", color="fecc8e")
+define V = DynamicCharacter("v_name", image="vinny", color="f9e389")
+define I = Character("Icarus", image="icarus", color="f1a192")
+define F = Character("Francis", color="c5bc4f")
+define E = Character("Eduardo", color="855d3d")
 
-define Classmate1 = Character("Classmate 1")
-define Classmate2 = Character("Classmate 2")
-define Outcast = Character("Outcast")
-define Teacher = Character("Teacher")
+define classmateColor = "#afb4be"
+define Classmate1 = Character("Classmate 1", color=classmateColor)
+define Classmate2 = Character("Classmate 2",color=classmateColor)
+define Outcast = Character("Harper",color="#ffa3e5")
+define Teacher = Character("Teacher", color=classmateColor)
 
 # Pronoun variables
 default they = "they"
@@ -509,7 +510,7 @@ label frogBusinessman:
             show ariadne happy at left
             A "Francis, we need your help! Theo here is on [their] way out of our home, but your desk is blocking the path."
 
-        "We’re not here to visit you.":
+        "\"We’re not here to visit you.\"":
             $ himbully -= 1
             show ariadne neutral at left
             A "We’re here for a different reason. But of course, any other day I would be happy to visit you!"
@@ -1090,8 +1091,7 @@ label outsideMaze:
     # outside maze
     scene corn entrance
 
-    stop music fadeout 1.0
-    play music "audio/Kevin MacLeod - Nu Flute.mp3"
+    play music "audio/Kevin MacLeod - Nu Flute.mp3" fadeout 1.5 fadein 0.1
 
     T neutral "Hey…"
 
