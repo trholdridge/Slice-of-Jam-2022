@@ -562,7 +562,7 @@ label frogBusinessman:
 
     A "You heard the frog, Theo! Find a valuable object for Francis to sell!"
 
-    T shock "You don’t have one?"
+    T shocked "You don’t have one?"
 
     show ariadne neutral
     A "No."
@@ -832,7 +832,7 @@ label argument:
 
     "After a while of walking, Theo and Ariadne happen upon a familiar length of yarn."
 
-    T shock "We’ve been here before."
+    T shocked "We’ve been here before."
 
     show ariadne happy
     A "Sometimes, it happens."
