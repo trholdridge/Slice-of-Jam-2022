@@ -652,7 +652,7 @@ label askIcarus:
         T happy "Perfect!"
         show ariadne happy
         A "Thanks, Icarus! Don’t forget, Vinny’s streaming tomorrow at seven!"
-        show icarus mad
+        show icarus angy
         I "Don’t insult me. My memory is working fine."
         $ gift = "fedora"
 
@@ -947,7 +947,7 @@ label vinnyPartTwo:
         show vinny happy2
         V "Yes, I’m weird!"
 
-        T mad "That’s not a compliment!"
+        T angy "That’s not a compliment!"
         T neutral "I only meant, I don’t understand how you want to be famous so much. What makes you deserve to be famous, when you’re so…"
         T neutral "Not mainstream?"
 
@@ -1030,7 +1030,7 @@ label vinnyPartTwo:
         show vinny happy
         V "Yes, I’m weird!"
 
-        T mad "That’s not a compliment!"
+        T angy "That’s not a compliment!"
         T neutral "I only meant, I don’t understand how you want to be famous so much. What makes you deserve to be famous, when you’re so…"
         T neutral "Not mainstream?"
 
