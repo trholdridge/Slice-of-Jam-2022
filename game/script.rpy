@@ -134,7 +134,8 @@ label sceneEnterMaze:
     T angy "What the crap? Did those posers ditch me?"
 
     $ verb = verbMod("hope", "hopes")
-    "Theo is sure they’re just around the corner. [they!c] [verb] [their] friends haven’t noticed [theyre] missing. It would be embarrassing to get lost in such a small maze."
+    "Theo is sure they’re just around the corner. [they!c] [verb] [their] friends haven’t noticed [theyre] missing."
+    "It would be embarrassing to get lost in such a small maze."
     $ verb = verbMod("realize", "realizes")
     "Every fork looks the same. Theo begins to feel dizzy. [they!c] [verb] [theyre] hopelessly lost."
 
@@ -173,8 +174,9 @@ label sceneEnterMaze:
     show ariadne happy
     A "That lazy bum. Now it’s up to me to help you out. Stay paws-itive, you’ll be home in no time!"
 
-    "Theo isn’t sure whether [theyre] hallucinating. A flying person and a talking cat? The sun must’ve gotten to [them]. Perhaps this is all a fever dream and [theyre] going to wake up any minute."
-    "Regardless of whether this is real, the cat is waiting for Theo’s response."
+    "Theo isn’t sure whether [theyre] hallucinating. A flying person and a talking cat? The sun must’ve gotten to [them]."
+    "Perhaps this is all a fever dream and [theyre] going to wake up any minute."
+    "Regardless of whether this is real, though, the cat is waiting for Theo’s response."
 
     menu:
         "\"Fine. Anything as long as I don’t have to hang out with weirdos too long.\"":
@@ -215,12 +217,14 @@ label miniSnailMaze:
 
     scene snail maze
 
-    "Soon, they come across a curious square table. The top of it is deeply grooved in grid-like patterns, forming a miniature maze. Ariadne leaps atop the edge of the maze and peers inside it."
+    "Soon, they come across a curious round table. The top of it is covered with precariously place blocks forming a miniature maze."
+    "Ariadne leaps atop the edge of the maze and peers inside it."
 
     show ariadne happy at left
     A "Eduardo? Is that you?"
 
-    "Theo follows Ariadne’s line of sight to spot Eduardo within the maze. A trail of slime marks Eduardo’s pathing, which double-backs and loops around. He is having difficulty escaping the maze because he is a tiny snail."
+    "Theo follows Ariadne’s line of sight to spot Eduardo within the maze."
+    "A trail of slime marks Eduardo’s pathing, which double-backs and loops around. He is having difficulty escaping the maze because he is a tiny snail."
     "He is too small to see that he is only a few turns away from the exit."
 
     E "Eh… eh…. ehhh-xaust-ehhhhd…"
@@ -279,7 +283,8 @@ label afterSnail:
     "Theo and Ariadne double back on themselves several times. Fortunately, Ariadne’s yarn allows them to retrace their steps and try a different route."
 
     show ariadne happy at center
-    A "Meow, don’t get the wrong idea. I do know where we are going. However, the labyrinth shifts around every so often, so you can never memorize a path for the next day!"
+    A "Meow, don’t get the wrong idea. I do know where we're going…"
+    A "However, the labyrinth shifts around every so often, so you can never memorize a path for the next day!"
 
     T neutral "Huh? You said you know where you’re going, but also that you don’t know any paths."
 
@@ -291,7 +296,8 @@ label vinnyPartOne:
 
     scene inside maze yassified
 
-    "Theo and Ariadne emerge into a small clearing. In the center of it sits a strange creature. Theo can only describe the creature as some sort of cow-centaur with a nerd torso. They are everything Theo dislikes."
+    "Theo and Ariadne emerge into a small clearing. In the center of it sits a strange creature."
+    "Theo can only describe the creature as some sort of cow-centaur with a nerd torso. They are everything Theo dislikes."
 
     show vinny sad at right
 
@@ -405,7 +411,8 @@ label icarusPartOne:
     "Theo is less skeptical that Ariadne is actually leading [them] out, after meeting Vinny."
 
     show ariadne neutral at center
-    A "You should know, Theo, what I admire most about Vinny is that he’s not afraid to be himself. I wish more people would see that, so that he could achieve his goal."
+    A "You should know, Theo, what I admire most about Vinny is that he’s not afraid to be himself."
+    A "I wish more people would see that, so that he could achieve his goal."
 
     "Ariadne fluffs her tail thoughtfully."
 
@@ -527,7 +534,8 @@ label frogBusinessman:
 
     F "Observe here."
 
-    "Francis shows them a complicated collection of graphs and spreadsheets on his screen. He has a command line window open, on which numbers scroll past endlessly."
+    "Francis shows them a complicated collection of graphs and spreadsheets on his screen."
+    "He has a command line window open, on which numbers scroll past endlessly."
 
     F "This is essential to maximize my profits from the stock market income stream."
 
@@ -615,8 +623,7 @@ label askIcarus:
 
     scene inside maze yassified
     "Theo retraces [their] steps with Ariadne's yarn to the hallway where [they] met Icarus."
-
-    # show labyrinth background
+    show ariadne neutral at left
 
     T neutral "Icarus, you there?"
 
@@ -662,7 +669,6 @@ label askIcarus:
     jump frogEnd
 
 label askVinny:
-    show ariadne happy
     A "Worth a shot!"
 
     scene inside maze yassified
@@ -675,7 +681,7 @@ label askVinny:
     show vinny neutral
     V "I need to practice talking without this lisp…"
 
-    show ariadne happy
+    show ariadne happy at left
     A "We’re back!"
 
     show vinny happy
@@ -807,7 +813,7 @@ label frogEnd:
     else:
         "Having found nothing, Ariadne and Theo return to Francis’ workstation."
 
-        show ariadne sad
+        show ariadne sad at left
         A "Francis… we’ve failed you. We don’t have anything to sell."
 
         F "That is disappointing, but please do not feel too bad."
@@ -828,7 +834,7 @@ label argument:
 
     T shock "We’ve been here before."
 
-    show ariadne happy at left
+    show ariadne happy
     A "Sometimes, it happens."
     show ariadne neutral
     A "Let’s go back to the right turn instead of the left…"
@@ -899,7 +905,8 @@ label argument:
         I "I’ve had enough of this one too."
         hide ariadne
 
-        "Icarus strides towards Theo. Theo cringes away, but she only swipes [them] up by [their] shoulders and ascends into the sky. She seems to delight in the way Theo squeals in fright when she tosses [them] onto the ground outside the corn maze after a steep dive."
+        "Icarus strides towards Theo. Theo cringes away, but she only swipes [them] up by [their] shoulders and ascends into the sky."
+        "She seems to delight in the way Theo squeals in fright when she tosses [them] onto the ground outside the corn maze after a steep dive."
 
         show icarus happy
         I "That’s that for you, brat! See that you change your attitude, unless you wanna die alone."
@@ -917,7 +924,7 @@ label vinnyPartTwo:
         V "Back again?"
 
         if hasAri == 1:
-            show ariadne neutral
+            show ariadne neutral at left
             A "Still on our way out. Theo is becoming impatient, though."
 
             show vinny neutral2
@@ -953,7 +960,8 @@ label vinnyPartTwo:
         show vinny neutral2
         V "People who want to fit in, they erase many of the unique parts of themselves."
         show vinny happy2
-        V "Those moo-nique parts are in fact what endears them to udders! The things that I care about aren’t less important to me just because they aren’t important to everyone else."
+        V "Those moo-nique parts are in fact what endears them to udders!"
+        V "The things that I care about aren’t less important to me just because they aren’t important to everyone else."
         show vinny neutral2
         V "You have a moo-nique interest of your own, right?"
 
@@ -977,7 +985,7 @@ label vinnyPartTwo:
 
         "Icarus swoops in."
 
-        show icarus happy at center
+        show icarus happy at left
         I "Huh, I suppose you aren’t just some cardboard cutout after all. You’ve earned my help."
         hide icarus
 
@@ -990,7 +998,8 @@ label vinnyPartTwo:
 
         I "Alright sprout, follow the yarn."
 
-        "Vinny gives Theo an encouraging smile as [they] step tentatively back into the labyrinth corridors."
+        $ verb = verbMod("step", "steps")
+        "Vinny gives Theo an encouraging smile as [they] [verb] tentatively back into the labyrinth corridors."
         hide vinny
         hide ariadne
     else:
@@ -1034,7 +1043,8 @@ label vinnyPartTwo:
         show vinny neutral
         V "People who want to fit in, they erase many of the unique parts of themselves."
         show vinny happy
-        V "Those moo-nique parts are in fact what endears them to udders! The things that I care about aren’t less important to me just because they aren’t important to everyone else."
+        V "Those moo-nique parts are in fact what endears them to udders!"
+        V "The things that I care about aren’t less important to me just because they aren’t important to everyone else."
         show vinny neutral
         V "You have a moo-nique interest of your own, right?"
 
@@ -1058,7 +1068,7 @@ label vinnyPartTwo:
 
         "Icarus swoops in."
 
-        show icarus happy at center
+        show icarus happy at left
         I "Huh, I suppose you aren’t just some cardboard cutout after all. You’ve earned my help."
         hide icarus
 
@@ -1071,7 +1081,8 @@ label vinnyPartTwo:
 
         I "Alright sprout, follow the yarn."
 
-        "Vinny gives Theo an encouraging smile as [they] step tentatively back into the labyrinth corridors."
+        $ verb = verbMod("step", "steps")
+        "Vinny gives Theo an encouraging smile as [they] [verb] tentatively back into the labyrinth corridors."
         hide vinny
         hide ariadne
 
