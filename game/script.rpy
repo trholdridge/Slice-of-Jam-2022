@@ -496,7 +496,6 @@ label frogBusinessman:
 
     scene suit frog
 
-    "The last doorway, however, is blocked by the desk of a professional frog. The nameplate on his desk says \"FRANCIS.\""
     F "Greetings, travelers. Please sit and have some tea; I always enjoy company between three and seven pm. What brings you to my den on this charming afternoon?"
 
     menu:
